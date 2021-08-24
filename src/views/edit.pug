@@ -1,4 +1,10 @@
 extends base.pug
 
 block content 
-    h1 Edit Video!
+    h4 Change Title Of Video
+    //- action = "/save-changes", maction은 form의 데이터값을 해당 ""의 주소로 보내는 역할, 별개로 url을 만들지않을것이기때문에 action은 사용 x
+    form(method = "POST") 
+        //- POST method는 데이터를 해당 url로 보낼 때, 즉 데이터를 back end로 보낼때 사용, 즉 form형식에서 값을 제출하는 submit type을 사용할 때 이용
+        input(name="title", placeholder="Video Title", value = video.title,required )
+        //- required 붙힌 이유는 placeholder안에 값이 없으면 submit할수 없게 막아두기 위해서
+        input(value = "Save", type = "submit")

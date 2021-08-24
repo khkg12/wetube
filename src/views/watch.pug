@@ -1,4 +1,7 @@
 extends base.pug
 
 block content 
-    h1 Watch Video!
+    h1 #{video.views} #{video.views === 1 ? "view" : "views"}
+    a(href=`${video.id}/edit`) Edit Video &rarr; 
+    //- href의 안에 /~~가 들어가면 그말대로 루트 /로부터 시작하는 url로 이동하고 / 없이 edit만 있다면 현위치의 끝부분만 바꿔준다.
+    //- 즉 /~~가 absolute url, ~~가 relactive url.
