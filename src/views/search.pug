@@ -1,0 +1,11 @@
+extends base.pug
+include mixins/video
+
+block content
+    form(method="GET") 
+        input(placeholder = "Search by title", type = "text", name = "keyword")
+        input(type = "submit", value = "Search now")
+        //- GET이므로 제출한 form의 값이 주소로 인식되어진다. 하지만 여기서도 마찬가지로 input에 name이없다면 값을 사용불가
+    div
+        each video in videos
+            +video(video)

@@ -6,7 +6,15 @@ html(lang = "ko")
     body    
         header 
             h1=pageTitle
-            block uploadVideo
+            nav     
+                ul  
+                    li 
+                        a(href="/") home
+                    block uploadVideo
+                    li 
+                        a(href="/search") search
+                    li 
+                        a(href="/join") join                        
         main
             block content
         include partials/footer.pug

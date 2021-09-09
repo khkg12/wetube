@@ -3,6 +3,8 @@ import mongoose from "mongoose";
 mongoose.connect("mongodb://127.0.0.1:27017/wetube", {
   useNewUrlParser: true,
   useUnifiedTopology: true,
+  useFindAndModify: false,
+  useCreateIndex: true, // DeprecationWarning: collection.ensureIndex is deprecated. Use createIndexes instead. 경고 해결법
 }); // mongodb에 새로운 database를 만드는 코드로 터미널에 mongo를 입력하고 연결되어있는 주소를 얻은 뒤, 그 주소뒤에 /nameofnewdatabase를 입력해주면 됨. 내경우에는 wetube
 
 const db = mongoose.connection;
