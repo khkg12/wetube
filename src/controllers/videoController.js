@@ -21,7 +21,7 @@ export const getEdit = async (req, res) => {
   const { id } = req.params;
   const video = await Video.findById(id); // 이 경우 exists는 사용하기 적합하지 않다. 이유는 Edit에 video object를 보내줘야하기 때문
   if (!video) {
-    return res.render("404", { pageTitle: "Video not found." }); // 비디오가 존재하지 않을 경우 리턴하는 코드
+    return res.status(404).render("404", { pageTitle: "Video not found." }); // 비디오가 존재하지 않을 경우 리턴하는 코드
   }
   return res.render("edit", { pageTitle: `Edit: ${video.title}`, video });
 };
@@ -31,7 +31,7 @@ export const postEdit = async (req, res) => {
   const video = await Video.exists({ _id: id }); // exixts의 경우 video object가 필요한 것이 아닌 video object의 존재 유무만 확인하면 됨
   const { title, description, hashtags } = req.body;
   if (!video) {
-    return res.render("404", { pageTitle: "Video not found." });
+    return res.status(404).render("404", { pageTitle: "Video not found." });
   }
   await Video.findByIdAndUpdate(id, {
     title,
@@ -57,7 +57,7 @@ export const postUpload = async (req, res) => {
     // const dbVideo = await video.save(); // video가 mogoose model이기 때문에 가능한 기능, promise를 return. 그리고 async-await를 통해 데이터가 db에 저장되고 사용가능해지는 시간동안 기다려줌 하지만 위 코드처럼 const로 video를 js로 설정하지않고 Video.create를 사용하면 필요없음
     return res.redirect("/");
   } catch (error) {
-    return res.render("upload", {
+    return res.status(400).render("upload", {
       pageTitle: `upload Video`,
       errorMessage: error._message,
     });

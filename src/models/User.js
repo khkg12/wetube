@@ -10,9 +10,7 @@ const userSchema = new mongoose.Schema({
 });
 
 userSchema.pre("save", async function () {
-  console.log("Users Password", this.password);
   this.password = await bcrypt.hash(this.password, 5); // create과정에서 입력받은 password값이 this.password, 저장되기 전에 먼저 거치는 함수, 5는 saltRounds로 몇번 hash할지 정하는 것
-  console.log("Hashed Password", this.password);
 });
 
 const User = mongoose.model("User", userSchema);

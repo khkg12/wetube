@@ -17,15 +17,26 @@
   "homepage": "https://github.com/khkg12/wetube#readme",
   "dependencies": {
     "bcrypt": "^5.0.1",
+    "connect-mongo": "^4.6.0",
+    "dotenv": "^10.0.0",
     "express": "^4.17.1",
-    "mongoose": "^5.13.8",
+    "express-session": "^1.17.2",
+    "mongo-connect": "0.0.6",
+    "mongodb": "^4.1.2",
+    "mongoose": "^6.0.8",
     "morgan": "^1.10.0",
-    "pug": "^3.0.2"
+    "node-fetch": "^2.6.1",
+    "pug": "^3.0.2",
+    "upgrade": "^1.1.0"
   },
   "devDependencies": {
     "@babel/core": "^7.15.0",
     "@babel/node": "^7.14.9",
     "@babel/preset-env": "^7.15.0",
+    "@types/node-fetch": "^3.0.3",
     "nodemon": "^2.0.12"
+  },
+  "optionalDependencies": {
+    "fsevents": "*"
   }
 }
